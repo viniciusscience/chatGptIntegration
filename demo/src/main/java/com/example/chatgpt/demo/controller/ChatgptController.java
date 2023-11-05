@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.chatgpt.demo.integration.ChatGptIntegration;
+import com.example.chatgpt.demo.integration.ChatGpt;
 import com.example.chatgpt.demo.integration.model.Message;
 
 @RestController
@@ -15,11 +15,11 @@ import com.example.chatgpt.demo.integration.model.Message;
 public class ChatgptController {
 
 	@Autowired
-	private ChatGptIntegration chatGptIntegration;
+	private ChatGpt chatGpt;
 
 	@GetMapping("/{message}")
 	ResponseEntity<Message> chamaGpt(@PathVariable String message) {
-		var result = chatGptIntegration.enviarMensagem(message);
+		var result = chatGpt.enviarMensagem(message);
 		return ResponseEntity.ok(result);
 	}
 }
